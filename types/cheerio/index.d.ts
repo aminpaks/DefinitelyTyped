@@ -9,13 +9,14 @@
 //                 AzSiAz <https://github.com/AzSiAz>
 //                 Ryo Ota <https://github.com/nwtgck>
 //                 Hiroki Osame <https://github.com/privatenumber>
+//                 Amin Paks <https://github.com/aminpaks>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference types="node" />
 
 interface Document {}
 
-declare namespace cheerio {
+declare module 'cheerio' {
     interface Element {
         // Document References
         // Node Console
@@ -40,7 +41,7 @@ declare namespace cheerio {
 
     type AttrFunction = (el: Element, i: number, currentValue: string) => any;
 
-    interface Cheerio {
+    export interface Cheerio {
         // Document References
         // Cheerio https://github.com/cheeriojs/cheerio
         // JQuery http://api.jquery.com
@@ -248,7 +249,7 @@ declare namespace cheerio {
         toArray(): Element[];
     }
 
-    interface CheerioParserOptions {
+    export interface CheerioParserOptions {
         // Document References
         // Cheerio https://github.com/cheeriojs/cheerio
         // HTMLParser2 https://github.com/fb55/htmlparser2/wiki/Parser-options
@@ -299,9 +300,7 @@ declare namespace cheerio {
         load(html: string | Buffer, options?: CheerioParserOptions): Root;
         load(element: Element, options?: CheerioParserOptions): Root;
     }
-}
 
-declare module 'cheerio' {
-    const cheerioModule: cheerio.CheerioAPI;
-    export = cheerioModule;
+    const cheerioModule: CheerioAPI;
+    export default cheerioModule;
 }
